@@ -1,0 +1,15 @@
+[{
+    "menu" : "Fried Chicken",
+    "price": 530,
+    "status": 50
+  },
+  {
+    "menu": "Vegetable Soup",
+    "price": 100,
+    "status": 0
+  },
+  {
+    "menu": "Bun and Cheese",
+    "price": 150,
+    "status": 0
+  }]
