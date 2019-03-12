@@ -21,42 +21,50 @@ var getStatus = function(x) {
 
 
 var items = [{
-    "menu" : "Fried Chicken",
+    "menu": "Fried Chicken",
     "price": 530,
     "status": 50
-  },
-  {
+},
+{
     "menu": "Vegetable Soup",
     "price": 100,
     "status": 0
-  },
-  {
+},
+{
     "menu": "Bun and Cheese",
     "price": 150,
     "status": 0
-  }];
+}];
 
-var setGeoLocation = function(){
+var setGeoLocation = function(callback) {
     // onSuccess Callback
     // This method accepts a Position object, which contains the
     // current GPS coordinates
     //
+
     var onSuccess = function(position) {
-        alert('Latitude: '          + position.coords.latitude          + '\n' +
-              'Longitude: '         + position.coords.longitude         + '\n' +
-              'Altitude: '          + position.coords.altitude          + '\n' +
-              'Accuracy: '          + position.coords.accuracy          + '\n' +
-              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-              'Heading: '           + position.coords.heading           + '\n' +
-              'Speed: '             + position.coords.speed             + '\n' +
-              'Timestamp: '         + position.timestamp                + '\n');
+        var successHtml = "<br/><hr/>";
+        successHtml = "<h4>GPS Coordinates</h4>"
+        successHtml += 'Latitude: ' + position.coords.latitude + '\n';
+        successHtml += 'Longitude: ' + position.coords.longitude + '\n';
+        successHtml += 'Altitude: ' + position.coords.altitude + '\n';
+        /* 'Accuracy: '          + position.coords.accuracy          + '\n' +
+         'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+         'Heading: '           + position.coords.heading           + '\n' +
+         'Speed: '             + position.coords.speed             + '\n' +
+         'Timestamp: '         + position.timestamp                + '\n');
+        */
+        callback(successHtml);
     };
 
     // onError Callback receives a PositionError object
     //
     function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
+        var errorHtml = "<br/><hr/>";
+        errorHtml = "<h4>GPS Error</h4>"
+        errorHtml += 'code: ' + error.code + '\n';
+        errorHtml += 'message: ' + error.message + '\n';
+        callback(errorHtml);
     }
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
 };
@@ -114,5 +122,9 @@ var menu_items_elemt;
 ons.ready(function() {
     menu_items_elemt = document.querySelector('#menu-items');
     loadItems();
-    setGeoLocation();
+    setGeoLocation(function(html_result) {
+        var gps_div = document.createElement("div");
+        gps_div.innerHTML = html_result;
+        menu_items_elemt.appendChild(gps_div);
+    });
 });
