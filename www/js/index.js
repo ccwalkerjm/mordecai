@@ -36,8 +36,33 @@ var items = [{
     "status": 0
   }];
 
-var doInitPage = function() {
-    var menu_items_elemt = document.querySelector('#menu-items');
+var setGeoLocation = function(){
+    // onSuccess Callback
+    // This method accepts a Position object, which contains the
+    // current GPS coordinates
+    //
+    var onSuccess = function(position) {
+        alert('Latitude: '          + position.coords.latitude          + '\n' +
+              'Longitude: '         + position.coords.longitude         + '\n' +
+              'Altitude: '          + position.coords.altitude          + '\n' +
+              'Accuracy: '          + position.coords.accuracy          + '\n' +
+              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+              'Heading: '           + position.coords.heading           + '\n' +
+              'Speed: '             + position.coords.speed             + '\n' +
+              'Timestamp: '         + position.timestamp                + '\n');
+    };
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+};
+
+
+var loadItems = function() {
     menu_items_elemt.innerHTML = '<ons-row>' +
         '<ons-col width="5%"><h4>No</h4></ons-col>' +
         '<ons-col width="50%"><h4>Description</h4></ons-col>' +
@@ -82,11 +107,12 @@ var doInitPage = function() {
         row_item.appendChild(col_btn);
 
         menu_items_elemt.appendChild(row_item);
-
     }
 };
 
-
+var menu_items_elemt;
 ons.ready(function() {
-    doInitPage();
+    menu_items_elemt = document.querySelector('#menu-items');
+    loadItems();
+    setGeoLocation();
 });
