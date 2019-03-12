@@ -66,7 +66,11 @@ var setGeoLocation = function(callback) {
         errorHtml += 'message: ' + error.message + '\n';
         callback(errorHtml);
     }
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    try{
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }catch(e){
+        onError(e)
+    }
 };
 
 
