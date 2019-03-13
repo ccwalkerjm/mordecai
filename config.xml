@@ -3,7 +3,7 @@
     <name>mordecai		</name>
     <description>A sample Apache Cordova application that responds to the deviceready event.		</description>
     <author href="http://cordova.io" email="dev@cordova.apache.org">Apache Cordova Team		</author>
-    <engine name="android" spec="https://github.com/apache/cordova-android.git#5.1.1" />
+    <!--engine name="android" spec="https://github.com/apache/cordova-android.git#5.1.1" /-->
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
@@ -35,7 +35,7 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <!--engine name="android" spec="^6.3.0" /-->
-        <!--preference name="android-minSdkVersion" value="14" />
-        <preference name="android-targetSdkVersion" value="19" /-->
+        <preference name="android-minSdkVersion" value="14" />
+        <preference name="android-targetSdkVersion" value="19" />
     </platform>
 </widget>
