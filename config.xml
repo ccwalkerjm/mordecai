@@ -30,8 +30,10 @@
     <plugin name="cordova-plugin-statusbar" spec="~2.4.2" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.3" />
     <!--preference name="android-minSdkVersion" value="16" /-->
-    <engine name="android" spec="^6.3.0" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <engine name="android" spec="^6.3.0" />
+        <preference name="android-minSdkVersion" value="14" />
+        <preference name="android-targetSdkVersion" value="19" />
     </platform>
 </widget>
