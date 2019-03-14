@@ -37,7 +37,7 @@ var items = [{
 }];
 
 var setGeoLocation = function(callback) {
-    // onSuccess Callback
+    // onSuccess Callback yrtryrryrr
     // This method accepts a Position object, which contains the
     // current GPS coordinates
     //
